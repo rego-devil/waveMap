@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta content="text/html; charset=utf-8" http-equiv="content-type">
+		<title>Canvas</title>
+		<style>
+			canvas { display: block;  margin: 20px auto 0 auto; }
+		</style>
+		<script src="js/vendor/class.js"></script>
+		<script src="js/array-x.js"></script>
+		<script src="js/matrix.js"></script>
+		<script src="js/waveMap.js"></script>
+		
+	</head>
+    <body>
+		<input value="10" id="widthCount" type="text" />
+		<input value="10" id="heightCount" type="text" />
+		<button id="beginTest">Расчитать</button>
+		<canvas id="drawField" width="100" height="100">HTML5 need</canvas>
+		<script>
+			window.onload = function(){
+				document.getElementById('beginTest').addEventListener('click', function(){
+					
+					var hCount = document.getElementById('widthCount').value;
+					var vCount = document.getElementById('heightCount').value;
+					
+					var matrix = new Matrix( hCount,vCount );
+					matrix.randomFillMartrix();
+				
+					new WaveMap('drawField', matrix.getMatrix(), matrix.getBeginPoint(), matrix.getEndPoint() );  //id, start point, end point
+				
+					
+				});
+				
+				
+			}
+		</script>
+    </body>
+</html>
